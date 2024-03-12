@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitc.javateam1.mapper.BoardMapper">
+
+
+    <select id="selectBoardDetail" resultType="com.bitc.javateam1.dto.BoardDTO">
+        SELECT
+        tb_comm.cm_idx,cm_num, cm_nick, title, content, postdate, visitcount ,img_url,img_name ,(select count(*) from tb_reply where comm_idx = tb_comm.cm_idx) as reviewCount
+        FROM
+        tb_comm left join tb_comm_img
+        on tb_comm.cm_idx = tb_comm_img.cm_idx
+        WHERE
+        tb_comm.cm_idx = #{cmIdx};
+    </select>
+
+    <delete id="deleteImg" parameterType="int">
+        DELETE FROM tb_comm_img
+        where cm_idx = #{cmIdx};
+    </delete>
+
+
+
+    <insert id="insertBoard" parameterType="com.bitc.javateam1.dto.BoardDTO" useGeneratedKeys="true" keyProperty="cmIdx">
+        INSERT INTO
+        tb_comm(cm_id, cm_nick, title, content, postdate, cm_num, level)
+        VALUES
+        (#{cmId}, #{cmNick}, #{title}, #{content}, NOW(), #{cmNum}, #{level})
+    </insert>
+
+ <update id="updatePost" parameterType="com.bitc.javateam1.dto.BoardDTO">
+     UPDATE
+     tb_comm
+     SET
+     level = #{level},
+     cm_num = #{cmNum},
+     title = #{title},
+     content = #{content}
+     WHERE
+     cm_idx = #{cmIdx}
+
+ </update>
+
+    <delete id="deleteBoard">
+        DELETE FROM
+            tb_comm
+        WHERE
+            cm_idx = #{cmIdx}
+    </delete>
+
+    <select id="selectPageList" resultType="com.bitc.javateam1.dto.BoardDTO">
+        SELECT
+        tb_comm.cm_idx, cm_nick, title, content, DATE_FORMAT(postdate, '%y-%m-%d')as postdate, visitCount ,img_url,img_name, (select count(*) from tb_reply where comm_idx = tb_comm.cm_idx) as reviewCount
+        FROM
+        tb_comm left join tb_comm_img
+        on tb_comm.cm_idx = tb_comm_img.cm_idx
+        WHERE cm_num = 0
+        ORDER BY tb_comm.cm_idx DESC
+    </select>
+
+    <update id="updateHitCount" parameterType="int">
+        UPDATE tb_comm SET visitcount = visitcount + 1
+        WHERE cm_idx = #{cmIdx}
+    </update>
+
+
+    <select id="postList"  parameterType="String" resultType="com.bitc.javateam1.dto.BoardDTO">
+        SELECT
+        cm_idx, cm_id, title, cm_nick, postdate
+        FROM
+        tb_comm
+        WHERE
+        cm_id = #{cmId}
+        ORDER BY
+        cm_idx DESC
+    </select>
+
+
+    <insert id="insertBoardFileList" parameterType="com.bitc.javateam1.dto.BoardDTO">
+        INSERT INTO tb_comm_img(cm_idx,img_name, img_url)
+        <foreach collection="list" item="item" separator=",">
+            values (#{item.cmIdx},#{item.imgName},#{item.imgUrl});
+        </foreach>
+
+
+    </insert>
+
+
+
+    <select id="mateList" resultType="com.bitc.javateam1.dto.BoardDTO">
+        SELECT
+        cm_num, cm_idx, cm_nick, title, level, postdate, visitcount
+        FROM
+        tb_comm
+        WHERE
+        cm_num = 1
+        ORDER BY
+        cm_idx DESC
+    </select>
+
+    <delete id="MemberDelComm" parameterType="com.bitc.javateam1.dto.BoardDTO">
+        delete
+        from tb_comm
+        where cm_nick = #{cmNick};
+
+    </delete>
+    <delete id="MemberDelImg" parameterType="com.bitc.javateam1.dto.BoardDTO">
+        DELETE
+        FROM tb_comm_img
+        WHERE cm_idx IN (SELECT cm_idx FROM tb_comm WHERE cm_nick = #{cmNick})
+    </delete>
+</mapper>

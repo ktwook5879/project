@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+    <title>MINSOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="header" th:fragment="header-basic">
+
+        <div class="header_in">
+            <ul class="header_top" th:if="${session.id} == null">
+                <li><a href="/login/login.do">Login</a></li>
+                <li><a href="/login/register" th:href="@{/login/register}">Join</a></li>
+            </ul>
+            <ul class="header_top" th:unless="${session.id} == null or ${session.id} == 'admin'">
+
+
+                <li class="p_user"><p th:text="${session.nickName} +'님'"></p></li>
+                <li class="p_user"><p>반갑습니다.</p></li>
+                <li><a href="/mypage/about" th:href="@{/mypage/about}">MyPage</a></li>
+                <li><button id="logout_btn" class="btn_out" type="button">Logout</button></li>
+
+
+            </ul>
+            <ul class="header_top" th:if="${session.id} == 'admin' ">
+
+
+                <li class="p_user"><p th:text="${session.nickName} +'님'"></p></li>
+                <li class="p_user"><p>반갑습니다.</p></li>
+                <li><a  th:href="@{/admin}">ADMIN</a></li>
+                <li><button id="master_btn" class="btn_out" type="button">Logout</button></li>
+
+
+            </ul>
+
+            <a href="/main/minsome" class="_link"><img src="/img/minsome_s_logo.png" sizes="20" alt="로고"></a>
+            <a href="/main/minsome" class="_link"><img src="/img/minsome_s_person.png" sizes="20" alt="로고"></a>
+            <a href="/main/minsome" class="_link"><img src="/img/minsome_s_m.png" sizes="20" alt="로고"></a>
+
+            <ul class="nav">
+                <li><a href="/main/minsome">소개</a>
+                    <div class="sub"> <!--배경색-->
+                        <div class="sub_in"> <!--가운데 창-->
+                            <ul class="menu1">
+                                <li><a href="/main/minsome">소개</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </li>
+                <li><a href="/search/search">런런!</a>
+                    <div class="sub"> <!--배경색-->
+                        <div class="sub_in"> <!--가운데 창-->
+                            <ul class="menu1">
+
+                            </ul>  <ul class="menu2">
+                                <li><a href="/search/search">런런</a></li>
+                                <li><a href="#">부산런</a></li>
+                                <li><a href="#">전국런</a></li>
+                            </ul>
+                            <ul class="menu3">
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                </li>
+                <li class="a_menu"><a href="#">커뮤니티</a>
+                    <div class="sub"> <!--배경색-->
+                        <div class="sub_in"> <!--가운데 창-->
+                            <ul class="menu1">
+                                <li><a href="#"></a></li>
+                            </ul>
+                            <ul class="menu2">
+
+                            </ul>
+
+                            <ul class="menu3">
+                                <li><a href="/mate">메이트</a></li>
+                                <li><a href="/board">인증</a></li>
+                                <li><a href="/view">아이템</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+
+<script>
+
+    $(document).ready(function (){
+        $("#logout_btn").on("click",function (){
+            if(confirm("로그아웃 하시겠습니까?")){
+                location.href="/login/logout.do";
+            }
+
+        });
+        $("#master_btn").on("click",function (){
+            if(confirm("로그아웃 하시겠습니까?")){
+                location.href="/login/logout.do";
+            }
+
+        });
+
+
+    });
+
+</script>
+</header>
+</body>
+</html>

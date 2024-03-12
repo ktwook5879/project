@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis sql 쿼리 mapping 파일임을 나타내는 구문 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitc.javateam1.mapper.ReviewMapper">
+    <insert id="InsertReview" parameterType="com.bitc.javateam1.dto.ReviewDTO">
+
+        insert into tb_reply(comm_idx, re_nick, content, re_date)
+        values(#{commIdx}, #{reNick}, #{content} ,now());
+    </insert>
+
+
+    <select id="SelectReview" parameterType="int" resultType="com.bitc.javateam1.dto.ReviewDTO">
+        select rno, comm_idx, re_nick, content,  DATE_FORMAT(re_date, '%y-%m-%d')as re_date
+          FROM tb_reply
+         WHERE comm_idx = #{commIdx}
+    </select>
+
+    <select id="SelectReviewRno" parameterType="int" resultType="com.bitc.javateam1.dto.ReviewDTO">
+        SELECT re_nick
+        FROM tb_reply
+        where rno = #{rno}
+    </select>
+
+
+    <delete id="DeleteReview" parameterType="int">
+        DELETE FROM tb_reply
+        WHERE rno = #{rno};
+    </delete>
+
+
+    <delete id="DeleteallBoard" parameterType="int">
+        DELETE from tb_reply
+        where comm_idx = #{cmIdx}
+    </delete>
+
+    <delete id="DeleteNick" parameterType="com.bitc.javateam1.dto.ReviewDTO">
+        DELETE from tb_reply
+        where re_nick = #{reNick};
+    </delete>
+
+</mapper>

@@ -1,0 +1,191 @@
+main{
+    padding-bottom: 50px;
+}
+
+.section_div{
+    position: relative;
+    width: 1300px;
+    min-height: 1000px;
+    padding: 33px 68px 40px;
+    border: 2px solid #d5d5d5;
+}
+
+.title1{
+    padding-left: 68px;
+}
+
+h1{
+    font-family: 'FontAwesome', sans-serif;
+    font-style: italic;
+    color: #0085FF;
+}
+
+.btn_area{
+    padding-bottom: 20px;
+    border-bottom: solid #aaaaaa 1px;
+}
+
+.btn{
+    background-color: white;
+    border: 1px solid black;
+    color:  black;
+}
+
+.a_board:hover{
+   text-decoration: underline;
+}
+.inform{
+
+    font-size: 12px;
+    font-weight: lighter;
+
+
+    height: 80px;
+
+}
+.inform p{
+    font-weight: bolder;
+    font-size: 32px;
+}
+
+.inform a{
+    font-weight: bold;
+}
+.inform img{
+    border:  1px  solid grey; ;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+
+.text-content{
+
+}
+
+
+
+.review_area{
+    background-color: 	#f8f8f8;
+    width: 1300px;
+    padding-left: 68px;
+    padding-right: 68px;
+    border: 2px solid 	#f8f8f8;
+}
+
+.text_area{
+    background-color: #f8f8f8;
+    padding: 33px 68px 40px;
+    min-height: 200px;
+}
+.text_area textarea{
+    resize: none;
+    border: none;
+}
+
+.text-content img{
+    width: 600px;
+    height: 400px;
+}
+
+
+#btn_review{
+    width: 80px;
+    height: 50px;
+    font-size: 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+}
+
+.review_btn{
+    position: absolute;
+    bottom: 20px;
+
+}
+
+.p_review{
+    height: 110px;
+    border-top: solid #aaaaaa 1px;
+    border-bottom: solid #aaaaaa 1px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+
+}
+.auth{
+    margin-top: 20px;
+}
+.auth>span{
+    font-weight: bold;
+}
+.p_review img{
+
+    border:  1px  solid grey;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+}
+.kebab-menu {
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.kebab-menu_1{
+    display: flex;
+    flex-direction: column;
+}
+.kebab-menu-icon {
+    margin-bottom: 1px;
+    width: 4px;
+    height: 4px;
+
+    background-color: #000;
+}
+
+
+
+/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+.kebab-menu > ul > li {
+    float:left;
+    width:100px;
+    position:relative;
+}
+
+.sub-menu {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.kebab-menu > ul > li > ul {
+    right: 100px;
+    width:100px;
+
+    position: absolute;
+    border: black 1px solid;
+    font-size:14px;
+    background-color: white;
+}
+
+
+
+.sub-menu a {
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+ul li{
+    list-style: none;
+}
+
+.hidden{
+    display: none;
+}

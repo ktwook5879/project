@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis sql 쿼리 mapping 파일임을 나타내는 구문 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mybatis : 기존 JDBC 프로그래밍은 java 소스코드와 데이터 베이스의 SQL 쿼리문을 함께 사용하는 방식으로 구성되어 있음 -->
+<!-- java 소스 코드를 수정 시 SQL 쿼리의 수정이 발생할 수 있으며, SQL 쿼리 수정 시 java 소스 코드를 변경해야 하는 문제가 발 생하여 DB와 JDBC 프로그래밍의 협업 및 유지보수의 어려움이 발생함 -->
+<!-- mybatis는 JDBC 자바 소스코드와 데이터 베이스 SQL문을 서로 분리하여 사용하도록 만들어주는 프레임워크 -->
+<!-- 이러한 형태의 데이터 베이스 프레임워크를 ORM(Object Relational Mapping) 이라고 함 -->
+
+<!-- 실제 SQL문을 입력하는 하는 구문 -->
+<!-- 해당 xml 파일과 java interface 파일과 연동하여 사용함 -->
+<!--  <select>, <update>, <insert>, <delete> 태그를 사용하여 실제 SQL문 입력 -->
+
+<!-- <mapper> : @Mapper 어노테이션으로 설정되어 있는 인터페이스 파일과 연동되는 파일임을 스프링 프레임워크에 알려줌 -->
+<!-- namespace : 해당 어플리케이션의 자바 클래스명을 입력하여 연동함, 기본 자바 API 에 속한 클래스가 아니기 때문에 반드시 전체 패키지명을 모두 입력해야 함 -->
+
+<mapper namespace="com.bitc.javateam1.mapper.MemberMapper">
+<insert id="Register" parameterType="com.bitc.javateam1.dto.MemberDTO">
+    insert into tb_login(id, password, nickname, name, regidate)
+    values(#{id},#{password},#{nickName},#{name}, now())
+</insert>
+
+<!--    로그인-->
+    <select id="isUserInfo" parameterType="Map" resultType="int">
+        select count(*)as cnt
+        from tb_login
+        where id = #{id}
+        AND password = #{password}
+    </select>
+
+    <select id="getUserInfo" parameterType="String" resultType="com.bitc.javateam1.dto.MemberDTO">
+        select idx, id, password, nickName, name, regidate, grade
+        from tb_login
+        where id = #{id}
+    </select>
+
+
+    <select id="userList" resultType="com.bitc.javateam1.dto.MemberDTO">
+        SELECT
+        idx, id, nickName, name, regidate, grade
+        FROM
+        tb_login
+        ORDER BY
+        idx DESC
+    </select>
+
+    <select id="userDetail" resultType="com.bitc.javateam1.dto.MemberDTO">
+        SELECT
+        idx, id, nickName, name, regidate, grade
+        FROM
+        tb_login
+        WHERE
+        idx = #{idx}
+    </select>
+
+    <select id="regiCheck" resultType="int" parameterType="com.bitc.javateam1.dto.MemberDTO">
+        select count(*)
+        from tb_login where id = #{id} or nickname = #{nickName};
+    </select>
+
+    <delete id="memberDel" parameterType="com.bitc.javateam1.dto.MemberDTO">
+        DELETE FROM tb_login
+        WHERE nickname = #{nickName}
+    </delete>
+
+
+    <select id="memberInformation" parameterType="String" resultType="com.bitc.javateam1.dto.MemberDTO">
+        SELECT id, password, nickname, name
+        FROM tb_login
+        WHERE id = #{id}
+    </select>
+
+    <update id="edit" parameterType="com.bitc.javateam1.dto.MemberDTO">
+        UPDATE tb_login SET name = #{name}, password = #{password}, nickname = #{nickName}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectNickName" parameterType="String" resultType="int">
+        select count(*)as cnt
+        from tb_login
+        where nickname = #{nickName}
+    </select>
+</mapper>
+

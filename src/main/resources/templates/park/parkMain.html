@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+
+    <meta name="viewport" content="width=1400"><!--다른 매체에서도 너비 오류 없이 볼 수 있게-->
+    <title>MINSOME</title>
+    <!-- 폰트연결 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+    <!-- aos css -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- css 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/sub1.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <!-- js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!-- aos 라이브러리 -->
+    <script src="/js/aos.js"></script><!-- aos 소스 -->
+    <script src="/js/sub.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/logout.js"></script>
+    <style>
+        /*.nav {width: 100%;}*/
+        .nav_1 li {
+            position: relative;
+            font-size: 30px; margin: 50px; -webkit-text-stroke: 1px black; transition: all .5s;}
+        .nav_1 li:hover {color: rgba(0, 0, 0, 0); text-decoration: none; }
+        .nav_1 li:hover img {display: block;  }
+        .nav_1 li img {display: none; position: absolute; left: 50%; top: 50%; width: 400px; height: 500px; transform: translate(-50%,-50%); z-index: -1; transition: all .5s; border-radius: 15px;}
+        .spot1{
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+<a href="#" class="top"><img src="/img/minsome_m_top.png" alt="top버튼"></a>
+
+
+<!-- 헤더 -->
+<div th:replace="~{/layout/header :: header-basic}"></div>
+
+<div class="sub2_top">
+
+</div>
+
+<div id="sub2">
+    <h2>뛰어봤나! 여기가 부산이다!</h2>
+    <h4>민소매가 추천해요.</h4>
+    <br>
+    <br>
+    <br><br><br><br><br><br><br>
+    <div class="sub_hote">
+        <br>
+        <div class="nav_wrap2" style="height:350px">
+            <ul class="nav_1">
+                <li class="he">
+                    해운대
+                    <img src="/img/he.jpeg" alt="">
+                </li>
+                <li class="on">
+                    온천천
+                    <img src="/img/온천천_메인1.jfif" alt="">
+                </li>
+                <li class="riv">
+                    갈맷길
+                    <img src="/img/gal2.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <br><br><br>
+
+    </div>
+
+    <div class="spot1" style="height: 500px">
+        <img src="/img/runimg1.jfif" style="height: auto; width: 45%" alt="1">
+        <div class="spottext">
+            <h3>런린이의 기초상식</h3>
+            <p>런닝은 간단한 것처럼 보일 수 있지만, 올바른 기초를 알고 시작하는 것이 중요합니다. <br>
+                1. 적절한 신발 착용<br>
+                2. 올바른 자세 유지<br>
+                3. 러닝을 시작할 때는 천천히 걷거나 달리기를 시작하고, 점진적으로 속도와 거리를 늘려가며 몸을 적응시킵니다.<br>
+                이러한 기초를 기억하면 부상의 위험을 줄이고, 효과적이고 안전한 러닝 경험을 얻을 수 있습니다.</p>
+        </div>
+    </div>
+    <div class="spot2">
+        <div class="spottext">
+            <h3>함께 뛰어요!</h3>
+            <p>다양한 경험을 나누고 목표 달성을 위해 서로 동기를 부여할 수 있습니다 <br>
+                러닝은 개인 운동이지만, 러닝크루에 참여하면 사회적 활동의 즐거움을 느낄 수 있습니다. <br>
+                러닝크루는 다양한 러너들의 경험을 공유하는 플랫폼입니다. 새로운 루트, 운동 기술, 용품 등에 대한 유용한 정보를 얻을 수 있습니다.</p>
+        </div>
+        <img src="/img/runtoge.jfif" style="height: auto; width: 45%" alt="함께">
+    </div>
+    <div class="spot3">
+        <img src="/img/maraton.jfif" alt="마라톤" style="height: auto; width: 45%">
+        <div class="spottext">
+            <h3>도전의 순간, 당신의 마라톤을 시작하세요!</h3>
+            <p>더 나은 자신, 건강한 삶, 그리고 끝없는 성장이 당신을 기다리고 있습니다. <br>
+                함께 달려, 당신의 한계를 넘어 최고의 버전으로 거듭나보세요! 🏃‍♂️🌟 </p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+
+
+
+
+</body>
+
+</html>

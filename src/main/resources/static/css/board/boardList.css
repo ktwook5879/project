@@ -1,0 +1,142 @@
+#main_body{
+    min-height: 1000px;
+    margin: auto;
+    width: 1800px;
+
+}
+.card-container {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* 카드 간의 간격 조정 (선택사항) */
+
+}
+.card {
+    width: 400px;
+    height: 390px;
+    margin: 10px;
+    border-radius: 20px;
+
+    box-shadow: 0 0 5px #ccc;
+}
+
+.card-image {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    width: 100%;
+    height: 250px;
+}
+
+.text-content {
+    height: 50px;
+
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+
+}
+
+.card-title {
+    height: 50px;
+    text-align: center;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: bold;
+    color: #0085FF;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 12px;
+}
+
+.c_nick{
+
+    font-size: 12px;
+    font-weight: normal;
+    border-top:  1px  solid #ddd; overflow: hidden;
+    padding-top: 2px;
+    height: 80px;
+
+}
+
+.c_nick p{
+    font-size: 16px;
+}
+.c_nick img{
+    border:  1px  solid grey; ;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+}
+.c_nick .view{
+
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.m_nick {
+    font-size: 15px;
+    height: 80px;
+}
+
+.m_body{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.m_nick img{
+    border:  1px  solid grey; ;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.search {
+
+    margin: 0 auto;
+    padding-top: 50px;
+    position: relative;
+    width: 800px;
+    text-align: center; /* 검색창 내용 정렬을 중앙으로 */
+}
+
+input {
+
+    width: 100%;
+    height: 50px;
+    border: 1px solid skyblue;
+    border-radius: 50px;
+    padding: 10px 12px;
+    font-size: 22px;
+    font-style: italic;
+    font-family: 'FontAwesome', sans-serif;
+
+}
+
+input:focus
+
+{outline:2px solid #0085FF;}
+
+#img {
+    padding-top: 390px;
+    position : absolute;
+    width: 60px;
+    height: 60px;
+    top: 11px;
+    right: 1px;
+
+}
+
+section{
+    min-height: 1000px;
+    margin-bottom: 100px;
+}

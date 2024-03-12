@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>MINSOME</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+    <!-- aos css -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <!-- css 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/css/sub1.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!-- aos 라이브러리 -->
+    <script src="/js/aos.js"></script><!-- aos 소스 -->
+    <script src="/js/sub.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/logout.js"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        .mySlides1, .mySlides2 {
+            display: none
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 500px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a grey background color */
+        .prev:hover, .next:hover {
+            background-color: white;
+            color: #4e8cff;
+        }
+        .main_div {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .main_div img {
+
+            margin: 0 auto;
+        }
+
+        .main_div h3 {
+        }
+        .gif_area {
+            width: 100%;
+            background-color: #F8E4FF;
+            color: black;
+        }
+        .gif_area img{
+            width: 100%;
+        }
+
+        .top-run{
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<!--런린이 - 주니어 -민소매-->
+
+<div class="gif_area">
+    <img src="/img/itemMain/itemMaingif3.gif">
+    <br>
+    <br>
+    <h2 style="text-align: center">Ready, Set, Find</h2>
+    <br>
+    <br>
+    <h4 style="text-align: center">나의 운동 수준에 맞는 운동화를 찾아보세요.</h4>
+    <h4 class="" style="text-align:center">민소매가 보증합니다!</h4>
+    <br>
+</div>
+<br>
+<br>
+<div class="main_div">
+    <div class="col-md-10" style="display: flex; align-items: center;">
+        <img src="/img/itemMain/step1.jpg" class="img-responsive" style="width: 50%;">
+        <div style="flex: 1; padding-left: 20px;">
+            <div class="slideshow-container">
+                <div class="mySlides1">
+                    <a href="https://www.nike.com/kr/t/%EC%9C%88%ED%94%8C%EB%A1%9C-10-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%9F%AC%EB%8B%9D%ED%99%94-uxwidwCO/DV4022-103">
+                        <h3 style="margin-left: 80px">런린이를 위한 러닝화</h3>
+                        <img src="/img/런린이/나이키_윈플로_fin.png" style="width:100%">
+                        <p style="margin-left: 200px">나이키 윈플로</p>
+                    </a>
+                </div>
+
+                <div class="mySlides1">
+                    <a href="https://www.nike.com/kr/t/%ED%8E%98%EA%B0%80%EC%88%98%EC%8A%A4-40-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%9F%AC%EB%8B%9D%ED%99%94-TQtnoMrS/DV3853-001">
+                        <h3 style="margin-left: 80px">런린이를 위한 러닝화</h3>
+                        <img src="/img/런린이/나이키_페가수스_fin.png" style="width:100%">
+                        <p style="margin-left: 200px">나이키 페가수스</p>
+                    </a>
+                </div>
+
+                <div class="mySlides1">
+                    <a href="https://m.nbkorea.com/product/productDetail.action?styleCode=NBPFDF738R&colCode=20&cIdx=1288">
+                        <h3 style="margin-left: 80px">런린이를 위한 러닝화</h3>
+                        <img src="/img/런린이/뉴발란스_퓨어셀_레벨_fin.png" style="width:100%">
+                        <p style="margin-left: 180px">뉴발란스 퓨어셀 레벨</p>
+                    </a>
+                </div>
+                <div class="mySlides1">
+                    <a href="https://kor.mizuno.com/kr-kr/wave+rider+26+2e_j1gc2264/KRJ1GC226401250.html">
+                        <h3 style="margin-left: 80px">런린이를 위한 러닝화</h3>
+                        <img src="/img/런린이/미즈노_웨이브_fin.png" style="width:100%">
+                        <p style="margin-left: 200px">미즈노 웨이브</p>
+                    </a>
+                </div>
+                <div class="mySlides1">
+                    <a href="https://www.asics.co.kr/p/AKR_112330201-403">
+                        <h3 style="margin-left: 80px">런린이를 위한 러닝화</h3>
+                        <img src="/img/런린이/아식스_젤님버스_fin.png" style="width:100%">
+                        <p style="margin-left: 200px">아식스 젤님버스</p>
+                    </a>
+                </div>
+                <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="main_div" style="padding: 100px; display: flex; align-items: center; flex-direction: row-reverse;">
+    <img src="/img/itemMain/step2.jpg" style="width: 50%;">
+    <div style="flex: 1; padding-right: 20px;">
+        <div class="slideshow-container">
+            <div class="mySlides2">
+                <a href="https://www.nike.com/kr/t/%EB%B3%B4%EB%A9%94%EB%A1%9C-17-prm-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%9F%AC%EB%8B%9D%ED%99%94-sx4iCP3W/FN4268-300">
+                    <h3 style="margin-left: 100px">주니어를 위한 러닝화</h3>
+                    <img src="/img/주니어/나이키_보메로_fin.png" style="width:100%">
+                    <p style="margin-left: 200px">나이키 보메로</p>
+                </a>
+            </div>
+
+            <div class="mySlides2">
+                <a href="https://www.nike.com/kr/t/%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8B%B0-%EB%9F%B0-4-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%9F%AC%EB%8B%9D%ED%99%94-37bOzlTP/DR2665-001">
+                    <h3 style="margin-left: 100px">주니어를 위한 러닝화</h3>
+                    <img src="/img/주니어/나이키_인피티니런_fin.png" style="width:100%">
+                    <p style="margin-left: 190px">나이키 인피니티런</p>
+                </a>
+            </div>
+
+            <div class="mySlides2">
+                <a href="https://www.nike.com/kr/t/%EC%A4%8C-%ED%94%8C%EB%9D%BC%EC%9D%B4-5-%EC%97%98%EB%A6%AC%EC%9A%B0%EB%93%9C-%ED%82%B5%EC%B4%88%EA%B2%8C-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%A0%88%EC%9D%B4%EC%8B%B1%ED%99%94-QCPNcBtU/FD6562-100">
+                    <h3 style="margin-left: 100px">주니어를 위한 러닝화</h3>
+                    <img src="/img/주니어/나이키_줌플라이_fin.png" style="width:100%">
+                    <p style="margin-left: 200px">나이키 줌플라이</p>
+                </a>
+            </div>
+            <div class="mySlides2">
+                <a href="https://grandstage.a-rt.com/product/new?prdtNo=1020097251">
+                    <h3 style="margin-left: 100px">주니어를 위한 러닝화</h3>
+                    <img src="/img/주니어/써코니_엔돌핀_프로_fin.png" style="width:100%">
+                    <p href="#" style="margin-left: 180px">써코니 엔돌핀 프로</p>
+                </a>
+            </div>
+            <div class="mySlides2">
+                <a href="https://www.adidas.co.kr/%EC%95%84%EB%94%94%EC%A0%9C%EB%A1%9C-%ED%94%84%EB%9D%BC%EC%9E%84-x-2-%EC%8A%A4%ED%8A%B8%EB%A0%81/ID0263.html">
+                    <h3 style="margin-left: 100px">주니어를 위한 러닝화</h3>
+                    <img src="/img/주니어/아디다스_아디제로_프라임_fin.png" style="width:100%">
+                    <p style="margin-left: 170px">아디다스 아디제로 프라임</p>
+                </a>
+            </div>
+            <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="main_div" style="padding: 100px; display: flex; align-items: center;">
+    <img src="/img/itemMain/step3.jpg" style="width: 50%;">
+    <div style="flex: 1; padding-left: 20px;">
+        <div class="slideshow-container">
+            <div class="mySlides3">
+                <a href="https://www.nike.com/kr/t/%EB%B2%A0%EC%9D%B4%ED%8D%BC%ED%94%8C%EB%9D%BC%EC%9D%B4-3-%EC%97%98%EB%A6%AC%EC%9A%B0%EB%93%9C-%ED%82%B5%EC%B4%88%EA%B2%8C-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%A0%88%EC%9D%B4%EC%8B%B1%ED%99%94-yxTueXAI/FD6556-100">
+                    <h3 style="margin-left: 90px">민소매를 위한 러닝화</h3>
+                    <img src="/img/민소매/나이키_베이퍼플라이_fin.png" style="width:100%">
+                    <p style="margin-left: 190px">나이키 베이퍼플라이</p>
+                </a>
+            </div>
+            <div class="mySlides3">
+                <a href="https://www.nike.com/kr/t/%EC%95%8C%ED%8C%8C%ED%94%8C%EB%9D%BC%EC%9D%B4-3-%ED%94%84%EB%A1%9C%ED%86%A0-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%A0%88%EC%9D%B4%EC%8B%B1%ED%99%94-1XuwZY5a/FD8356-100">
+                    <h3 style="margin-left: 90px">민소매를 위한 러닝화</h3>
+                    <img src="/img/민소매/나이키_알파플라이_fin.png" style="width:100%">
+                    <p style="margin-left: 190px">나이키 알파플라이</p>
+                </a>
+            </div>
+            <div class="mySlides3">
+                <a href="https://www.nbkorea.com/product/productDetail.action?styleCode=NBPFDF733M&colCode=10&cIdx=">
+                    <h3 style="margin-left: 90px">민소매를 위한 러닝화</h3>
+                    <img src="/img/민소매/뉴발란스_퓨어셀_엘리트_fin.png" style="width:100%">
+                    <p style="margin-left: 180px">뉴발란스 퓨어셀 엘리트</p>
+                </a>
+            </div>
+            <div class="mySlides3">
+                <a href="https://www.adidas.co.kr/%EC%95%84%EB%94%94%EC%A0%9C%EB%A1%9C-%EC%95%84%EB%94%94%EC%98%A4%EC%8A%A4-%ED%94%84%EB%A1%9C-evo-1/IH5564.html">
+                    <h3 style="margin-left: 90px">민소매를 위한 러닝화</h3>
+                    <img src="/img/민소매/아디다스_아디제로_프로_fin.png" style="width:100%">
+                    <p style="margin-left: 170px">아디다스 아디제로 프로</p>
+                </a>
+            </div>
+            <div class="mySlides3">
+                <a href="https://www.asics.co.kr/p/AKR_112211105-300">
+                    <h3 style="margin-left: 90px">민소매를 위한 러닝화</h3>
+                    <img src="/img/민소매/아식스_메타스피드_스카이플러스_fin.png" style="width:100%">
+                    <p style="margin-left: 160px">아식스 메타스피드 스카이플러스</p>
+                </a>
+            </div>
+            <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let slideIndex = [1, 1, 1];
+    let slideId = ["mySlides1", "mySlides2", "mySlides3"]
+    showSlides(1, 0);
+    showSlides(1, 1);
+    showSlides(1, 2);
+
+
+    function plusSlides(n, no) {
+        showSlides(slideIndex[no] += n, no);
+    }
+
+    function showSlides(n, no) {
+        let i;
+        let x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) {
+            slideIndex[no] = 1
+        }
+        if (n < 1) {
+            slideIndex[no] = x.length
+        }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex[no] - 1].style.display = "block";
+    }
+</script>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+
+</body>
+</html>

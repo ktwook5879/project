@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>관리자</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/sub1.css">
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <script src="/js/logout.js"></script>
+    <script src="/js/sub.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+
+        body {
+            background-color: white; /* 연한 회색 배경 */
+            color: #333; /* 어두운 글자색 */
+        }
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%; /* 전체 폭을 늘림 */
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: auto; /* 가운데 정렬을 위해 margin 속성 추가 */
+            background-color: white; /* 흰색 테이블 배경 */
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: white; /* 분홍색 헤더 배경 */
+            color: black; /* 어두운 글자색으로 변경 */
+            /* 위아래 여백을 늘림 */
+            font-size: 14px;
+            border-top: 1px solid #222222;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            text-align: center; /* 가운데 정렬 추가 */
+        }
+
+        td{
+            padding: 25px;
+            font-size: 15px;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0; /* 더 어두운 그레이 톤 (hover 시) */
+        }
+
+        .board-main-title{
+            margin-left: 5px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .board-title{
+            font-weight: bolder;
+            font-size: 40px;
+        }
+
+        .board-sub-title{
+            margin-left: 3px;
+            font-size: 18px;
+            margin-top: 10px;
+            color: grey;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<main>
+    <section>
+        <div class="container">
+            <div class="board-main-title">
+                <p class="board-title">회원 관리</p>
+                <p class="board-sub-title">작성 글 목록</p>
+            </div>
+            <div>
+                <table> <!-- Bootstrap 테이블 클래스 추가 -->
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 40%">
+                        <col style="width: 10%">
+                        <col style="width: 17%">
+                        <col style="width: 13%">
+                        <col style="width: 10%">
+
+                    </colgroup>
+                    <thead> <!-- Bootstrap 다크 테이블 헤더 클래스 추가 -->
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>회원ID</th>
+                        <th>닉네임</th>
+                        <th>작성일</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${#lists.size(PageList.getList())} > 0" th:each="item : ${PageList.getList()}">
+                        <td th:text="${item.cmIdx}">글번호</td>
+                        <td th:text="${item.title}" style="text-align: left">제목</td>
+                        <td th:text="${item.cmId}">ID</td>
+                        <td th:text="${item.cmNick}">닉네임</td>
+                        <td th:text="${item.postdate}">작성일</td>
+                        <td>
+                            <a type="button"
+                               th:href="|/board/deleteBoard/${item.cmIdx}|" class="btn btn-danger" style="font-size: 14px;">삭제</a>
+                        </td>
+                    </tr>
+                    <tr th:unless="${#lists.size(PageList.getList())} > 0">
+                        <td colspan="4">조회된 내용이 없습니다.</td> <!-- 셀 병합 수를 4로 수정 -->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mt-3">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${PageList.getPrePage() == 0} ? 'disabled'">
+                    <a class="page-link" href="#" style="color: black" th:href="@{/admin/userPost(pageNum=${PageList.getPrePage()})}">&laquo;</a>
+                </li>
+                <li class="page-item" th:each="page : ${#numbers.sequence(PageList.getNavigateFirstPage(), PageList.getNavigateLastPage())}" th:classappend="${page == PageList.getPageNum()}">
+                    <a class="page-link" href="#" style="color: black" th:href="@{/admin/userPost(pageNum=${page})}" th:text="${page}"></a> <!-- 수정 -->
+                </li>
+                <li class="page-item" th:classappend="${PageList.getNextPage() == 0} ? 'disabled'">
+                    <a class="page-link" href="#" style="color: black" th:href="@{/admin/userPost(pageNum=${PageList.getNextPage()})}">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm d-flex justify-content-end" style="padding-bottom: 20px">
+                <a href="/admin" th:href="@{/admin}" class="btn btn-dark">회원 목록</a>
+            </div>
+        </div>
+    </section>
+</main>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+</html>

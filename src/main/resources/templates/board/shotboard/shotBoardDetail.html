@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/sub1.css">
+    <script src="/js/logout.js"></script>
+    <script src="/js/sub.js"></script>
+    <script src="/js/board/detailBoard.js"></script>
+    <link rel="stylesheet" href="/css/board/boardDetail.css">
+
+
+    <title>Title</title>
+    <style>
+        .re_date{
+            margin-right: 100px;
+        }
+        #btn_del{
+            background-color: white;
+            border: none;
+        }
+        .title1 img{
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<script>
+$(document).ready(function (){
+   $("#btn_update").on("click", function (){
+        const nickname = $("#Nick_input").val();
+        const postNick = $("#postNick").val();
+        var cmIdx  =$("#cmIdx").val();
+
+       if(nickname===postNick){
+            location.href="/board/update/"+cmIdx;
+       }else {
+           alert("작성자만 수정이 가능합니다.");
+       }
+
+   });
+
+
+});
+</script>
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<main class="container mt-5">
+    <div class="title1">
+        <img class="ms-2 me-1" src="/img/boardImg3.png">
+    </div>
+    <section class="section_div">
+
+        <button style="float: right" id="btn_update" class="btn btn-primary">수정</button>
+
+            <div class="btn_area d-flex justify-content-between mb-4" th:if="${board.getCmNum()==0}">
+                <a href="/board" id="btn_list" class="btn btn-primary">목록</a>
+            </div>
+        <div class="btn_area d-flex justify-content-between mb-4" th:unless="${board.getCmNum()==0}">
+            <a href="/mate" id="btn_list1" class="btn btn-primary">목록</a>
+
+        </div>
+
+            <div class="mb-2" th:if="${board.getCmNum()}==0">
+                <a style="font-weight: bolder" class="a_board" href="/board">인증게시판</a>
+
+
+            </div>
+            <div class="mb-2" th:unless="${board.getCmNum()}==0">
+                <a style="font-weight: bolder"   class="a_board" href="/mate">민소메이트</a>
+            </div>
+        <br>
+            <div class="inform">
+                <p th:text="${board.getTitle()}"></p>
+                <img class="ms-2 me-1" src="/img/boardImg.png">
+                <a id="nick_inform" th:text="by + ${board.getCmNick()}" th:value="${board.getCmNick()}"> </a>
+                <span class="ms-1" th:text="'조회&nbsp;&nbsp;'+  ${board.getVisitCount()}"></span>
+                <span class="ms-1" th:text="'작성일&nbsp;&nbsp;' + ${board.getPostdate()}"></span>
+            </div>
+            <div class="text-content">
+                <img class="card-image" th:src="${board.getImgUrl()}" alt="카드 이미지" onerror="this.src='/img/alt.jpg'">
+
+                <p class="mt-5" th:utext="${board.getContent()}"></p>
+            </div>
+
+
+
+            <div class="review_btn">
+                <button type="button" id="view_reply" class="btn btn-primary" th:text="'댓글(' + ${board.getReviewCount()}+')'"></button>
+            </div>
+
+
+
+
+    </section>
+    <div class="review_area">
+        <div id="review_area">
+
+        </div>
+        <div class="text_area mt-3">
+            <input type="hidden" th:value="${board.getCmIdx()}" id="cmIdx">
+            <textarea rows="5" id="content" name="content" style="width: 100%" placeholder="자신의 의견을 간단히 적어주세요."></textarea>
+            <input type="hidden" th:value="${session.nickName}" id="Nick_input">
+            <input type="hidden" th:value="${board.getCmNick()}" id="postNick">
+            <button style="float: right" type="button" id="btn_review">등록</button>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+</html>

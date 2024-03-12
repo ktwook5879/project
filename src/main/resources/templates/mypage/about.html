@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+
+    <meta name="viewport" content="width=1400"><!--다른 매체에서도 너비 오류 없이 볼 수 있게-->
+    <title>마이페이지</title>
+    <!-- 폰트연결 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <!-- aos css -->
+
+
+    <link rel="stylesheet" href="/css/sub1.css">
+
+    <link rel="stylesheet" href="/css/mypage/mypageAbout.css">
+
+    <script src="/js/sub.js"></script>
+    <script src="/js/script.js"></script>
+    <meta charset="UTF-8">
+</head>
+<style>
+
+.table{
+    border: none;
+    text-align: center;
+
+    margin-left: 20px;
+    margin-top: 70px;
+    width: 300px;
+}
+</style>
+<body>
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<div class="container">
+    <main>
+        <div class="sidenav">
+            <a class="side_1" href="#"><img src="/img/minsome_s_m.png"></a>
+            <a  class="side_2" href="/mypage/about" th:text="${session.nickName}"></a>
+
+            <a class="side_3" href="/mypage/mypage">정보 수정</a>
+            <a class="side_5" href="/mypage/delete">회원탈퇴</a>
+        </div>
+
+
+        <div class="main">
+            <form class="form_1">
+                <h4 class="ps-4 pt-3">나의 정보</h4>
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">닉네임 </span>
+                    <span class="ps-1 " th:text="${member.getNickName()}"></span>
+                </div>
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">아이디 </span>
+                    <span class="ps-1 " th:text="${member.getId()}"></span>
+                </div>
+
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">이름 </span>
+                    <span class="ps-1 " th:text="${member.getName()}"></span>
+                </div>
+
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">연락처 </span>
+                    <span class="ps-1 " >010-****-****</span>
+                </div>
+
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">주소 </span>
+                    <span class="ps-1 " >부산광역시 부산진구 중앙대로 708 부산 피아낸스센터 빌딩</span>
+                </div>
+                <div class="ps-4 pt-3">
+                    <span style="font-weight: bold">회원 등급</span>
+                    <span class="ps-1 " >민소매 회원</span>
+                </div>
+                <table class="table" style="border: 1px solid #f8f9fa">
+                    <thead >
+                    <tr>
+                        <th style="border: 1px solid #f8f9fa">게시글 수</th>
+                        <th>댓글 수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="border: 1px solid #f8f9fa" th:text="${member.getCommCount()}"></td>
+                        <td th:text="${member.getReCount()}"></td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </form>
+
+
+        </div>
+    </main>
+</div>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+
+</html>

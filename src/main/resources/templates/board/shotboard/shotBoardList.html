@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/sub1.css">
+    <link rel="stylesheet" href="/css/board/boardList.css">
+    <script src="/js/logout.js"></script>
+    <script src="/js/sub.js"></script>
+
+    <title>Title</title>
+    <style>
+        .board-main-title{
+            margin-left: -5px;
+            margin-top: 80px;
+            margin-bottom: 30px;
+        }
+
+        .board-title{
+            font-weight: bolder;
+            font-size: 40px;
+        }
+
+        .board-sub-title{
+            margin-left: 42px;
+            font-size: 17px;
+            margin-top: 30px;
+            color: grey;
+        }
+
+        .font{
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .nick{
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .date{
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<main>
+    <section style="width: 1400px">
+        <div class="board-main-title">
+            <p class="board-title">｜러닝 인증</p>
+            <p class="board-sub-title">인증해요!</p>
+        </div>
+        <div>
+            <div class="card-container">
+
+                <article class="card " th:if="${#lists.size(PageList.getList())}> 0" th:each="item : ${PageList.getList()}">
+                    <a th:href="@{|/board/${item.cmIdx}|}">
+                        <img  class="card-image" th:src="${item.imgUrl}"  alt="카드 이미지" onerror="this.src='/img/alt.jpg'">
+                        <div  class="card-content">
+                            <h2 class="card-title" th:text="${item.title}"></h2>
+
+                            <p class="mt-2 me-2 d-flex justify-content-end date" th:text="${item.postdate}"></p>
+                            <div class="c_nick">
+                                <img class="ms-2 me-1" src="/img/minsome_m.png">
+                                <a class="nick" th:text="${item.cmNick}"> </a>
+                                <p style="float:right" class="me-1 mt-1 font" th:text="${item.reviewCount}"></p>
+                                <img class="view ms-2 me-1" src="/img/review.jpg"  style="float: right">
+                                <p style="float:right" class="me-1 mt-1 font" th:text="${item.visitCount}"></p>
+                                <img class="view ms-2 me-1" src="/img/view.png" style="float: right">
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+        <div class="mt-5">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item" th:classappend="${PageList.getPrePage() == 0} ? 'disabled'">
+                    <a class="page-link" href="#" style="color: black" th:href="@{/board(pageNum=${PageList.getPrePage()})}">&laquo;</a>
+                </li>
+
+                <li class="page-item" th:each="page : ${#numbers.sequence(PageList.getNavigateFirstPage(), PageList.getNavigateLastPage())}" th:classappend="${page == PageList.getPageNum()}">
+                    <a class="page-link" style="color: black" href="#" th:href="@{/board(pageNum=${page})}" th:text="${page}">1</a>
+                </li>
+
+                <li class="page-item" th:classappend="${PageList.getNextPage() == 0} ? 'disabled'">
+                    <a class="page-link" href="#" style="color: black" th:href="@{/board(pageNum=${PageList.getNextPage()})}">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-sm d-flex justify-content-end">
+                <a href="/board/insert" th:href="@{/board/insert}" class="btn btn-dark">글쓰기</a>
+            </div>
+        </div>
+    </section>
+</main>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>관리자</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/sub1.css">
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <script src="/js/logout.js"></script>
+    <script src="/js/sub.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <div th:replace="~{/layout/header :: header-basic}"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#btn-list").on("click", function () {
+                location.href = "/admin";
+            });
+
+            $("#btn-content").on("click", function () {
+                const frm = $("#frm")[0];
+                frm.action = "/admin/userPost";
+                frm.submit();
+            });
+
+            $("#btn-delete").on("click", function () {
+                if(confirm("정말로 탈퇴시키겠습니까?")) {
+                    const frm = $("#frm")[0];
+                    frm.action = "/admin/delete";
+                    frm.submit();
+                }else{
+
+                }
+
+            })
+        })
+    </script>
+    <style>
+        * {
+            font-size: large;
+        }
+        section {
+            text-align: center; /* 섹션 전체를 가운데 정렬 */
+        }
+
+        form {
+            text-align: left; /* 폼 내부 요소를 왼쪽 정렬 */
+        }
+        div.input-group {
+            font-size: 30px;
+            color: #20c997;
+            width: 500px;
+            border: none;
+            border-bottom: solid #20c997 1px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+            background: none;
+            z-index: 5;
+
+        }
+        /* 추가된 부분 */
+        div.input-group input.form-control {
+            border: none; /* 폼 컨트롤의 기본 테두리 제거 */
+            outline: none; /* 포커스 효과 제거 */
+            background-color: transparent; /* 배경 투명으로 설정 */
+        }
+
+        div.input-group span.input-group-text {
+            border: none; /* 아이콘 텍스트의 기본 테두리 제거 */
+            background-color: transparent; /* 배경 투명으로 설정 */
+            position: absolute;
+            top: 10px; /* 아이콘이 텍스트 위에 위치하도록 조절 */
+            left: 10px;
+            padding: 0;
+            margin: 0;
+            color: #20c997;
+        }
+
+        div.input-group input.form-control:focus,
+        div.input-group input.form-control:active {
+            box-shadow: none; /* 포커스나 액티브 상태일 때의 박스 쉐도우 제거 */
+        }
+        input {
+            left: 80px;
+        }
+
+        /*    버튼*/
+        .btn-custom {
+            font-size: 20px;
+            padding: 15px;
+            margin-left: 9px;
+            background-color: transparent;
+            color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            color: rebeccapurple;
+        }
+
+        .btn-custom:active,
+        .btn-custom:focus {
+            color: #000;
+        }
+
+        .btn-custom:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 5px;
+            background: rgba(40, 167, 69, 0.2);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-custom:hover:before {
+            opacity: 1;
+        }
+
+        .btn-custom.transparent {
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        .btn-custom.transparent:hover {
+            background-color: transparent;
+            border-color: transparent;
+            color: #218838;
+        }
+
+        #btn-list {
+            color: #6c757d;
+        }
+
+        #btn-content {
+            color: #ffc107;
+        }
+
+        #btn-delete {
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+<main>
+    <section class="mt-5" style="width: 500px">
+        <form id="frm" method="post">
+            <div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">회원번호</span>
+                        <input type="text" class="form-control" id="user-idx" name="userIdx" readonly th:value="${user.idx}">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">회원ID</span>
+                        <input type="text" class="form-control" id="user-id" name="cmId" readonly th:value="${user.id}">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">닉네임</span>
+                        <input type="text" class="form-control" id="nickname" name="nickname" readonly th:value="${user.nickName}">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">회원명</span>
+                        <input type="text" class="form-control" id="user-name" name="user-name" readonly th:value="${user.name}">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">가입일</span>
+                        <input type="text" class="form-control" readonly th:value="${user.regidate}">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-text">회원등급</span>
+                        <input type="text" class="form-control" th:value="${user.grade}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-custom">
+
+                <div class="justify-content-center">
+                    <button  type="button" class="btn-custom transparent" id="btn-list">목록</button>
+                    <button type="button" class="btn-custom transparent" id="btn-content">회원 작성 목록</button>
+                    <button type="button" class="btn-custom transparent" id="btn-delete">회원 탈퇴</button>
+                </div>
+            </div>
+            <input type="hidden" id="method" name="_method">
+        </form>
+    </section>
+</main>
+<br>
+<br>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+</html>

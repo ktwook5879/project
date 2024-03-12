@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+
+  <meta name="viewport" content="width=1400"><!--다른 매체에서도 너비 오류 없이 볼 수 있게-->
+  <title>마이페이지</title>
+  <!-- 폰트연결 -->
+  <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <script
+          src="https://code.jquery.com/jquery-3.7.1.js"
+          integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+          crossorigin="anonymous"></script>
+  <!-- aos css -->
+
+  <link rel="stylesheet" href="/css/sub1.css">
+
+  <script src="/js/sub.js"></script>
+  <script src="/js/script.js"></script>
+  <meta charset="UTF-8">
+</head>
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+
+  .pass_inform{
+    padding-bottom: 30px;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+  }
+
+  .form_1{
+    padding-top: 150px;
+    width: 600px;
+  }
+  .btn_area{
+    margin-right: 300px;
+  }
+  .btn_area>button{
+    font-size: 15px;
+  }
+</style>
+<script>
+  $(document).ready(function (){
+    $("#btn_delete").on("click",function (){
+      var del_in = $("#del_inp").val();
+
+
+      if(del_in==="회원탈퇴"){
+        const frm = $("#frm")[0];
+        frm.action = "/mypage/deleteProcess";
+        frm.submit();
+      }else{
+        alert("문구를 정확하게 입력해주시길 바랍니다.")
+      }
+    });
+  });
+</script>
+<body>
+<div th:replace="~{/layout/header :: header-basic}"></div>
+<div class="container">
+  <main>
+    <div class="container">
+      <main>
+        <div class="sidenav">
+          <a class="side_1" href="#"><img src="/img/minsome_s_m.png"></a>
+          <a  class="side_2" href="/mypage/about" th:text="${session.nickName}"></a>
+
+          <a class="side_3" href="/mypage/mypage">정보 수정</a>
+          <a class="side_5" href="/mypage/delete">회원탈퇴</a>
+        </div>
+
+
+    <div class="main">
+      <form class="form_1" id="frm" method="post">
+        <h3>회원탈퇴</h3>
+
+
+        <div class="pass_inform">
+          <p class="mt-2">정말로 탈퇴를 하시려면 "회원탈퇴"를 입력해주세요</p>
+          <div class=" mt-4 col-sm-10">
+            <input type="text" id="del_inp" class="form-control" placeholder="회원탈퇴">
+          </div>
+
+
+
+        </div>
+      </form>
+      <div class="d-flex justify-content-center btn_area">
+        <button id="btn_delete" type="button" style="width: 400px"   class="btn btn-danger mt-2">회원탈퇴</button>
+      </div>
+
+    </div>
+  </main>
+</div>
+  </main>
+</div>
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+</body>
+
+
+</html>

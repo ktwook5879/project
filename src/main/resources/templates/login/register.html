@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+</script>
+<style>
+
+    body{
+        margin-bottom: 100px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    div {
+        position: relative;
+        width: 300px;
+        margin-left: 50px;
+        margin-top: 100px;
+    }
+
+    input {
+        font-size: 18px;
+        color: #333333;
+        width: 300px;
+        border: none;
+        border-bottom: solid #aaaaaa 1px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        position: relative;
+        background: none;
+        z-index: 5;
+    }
+
+
+    span {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+        background-color: #666;
+        width: 0;
+        height: 2px;
+        border-radius: 2px;
+        transition: 0.5s;
+    }
+
+    label {
+        position: absolute;
+        color: #aaa;
+        left: 10px;
+        font-size: 20px;
+        bottom: 8px;
+        transition: all .2s;
+    }
+
+    input:focus ~ label, input:valid ~ label {
+        font-size: 16px;
+        bottom: 40px;
+        color: #666;
+        font-weight: bold;
+    }
+
+    input:focus ~ span, input:valid ~ span {
+        width: 100%;
+    }
+</style>
+<body class="d-flex justify-content-center">
+<div style="width: 400px">
+    <form action="/login/registerProcess"  method="post" >
+        <a href="/main/minsome"><img src="/img/minsome_s_person.png" sizes="15" alt="로고"></a>
+        <a href="/main/minsome"><img src="/img/minsome_s_person.png" sizes="15" alt="로고"></a>
+        <a href="/main/minsome"><img src="/img/minsome_s_person.png" sizes="15" alt="로고"></a>
+
+        <h2 class="text-center">회원가입</h2>
+        <div>
+            <label for="id"></label>
+            <input type="text" id="id" name="id" placeholder="ID" required>
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="PW" required>
+        </div>
+        <div>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="NAME" required>
+        </div>
+        <div>
+            <label  for="nickName"></label>
+            <input type="text" id="nickName" name="nickName" placeholder="NickName" required>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary form-control">Register</button>
+
+            <a  class="d-flex justify-content-end" href="/login/login.do" style="font-size: 15px">Back to Home</a>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

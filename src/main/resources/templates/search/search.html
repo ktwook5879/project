@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/img/minsome_m_favicon.png" rel="icon" type="image/png" sizes="32x32" ><!--파비콘-->
+
+    <meta name="viewport" content="width=1400">
+    <title>MINSOME</title>
+    <!-- 폰트연결 -->
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+    <!-- css 연결 -->
+
+    <link rel="stylesheet" href="/css/sub1.css">
+
+
+
+    <!-- js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!-- aos 라이브러리 -->
+    <script src="/js/aos.js"></script><!-- aos 소스 -->
+    <script src="/js/sub.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/logout.js"></script>
+
+
+
+
+
+<script>
+
+
+
+    function getSearchList(){
+
+            $.ajax({
+                type: 'GET',
+                url: "/search/getSearchList",
+
+                data: $("form[name=search-form]").serialize(),
+                success: function (result) {
+
+                    //테이블 초기화
+                    $('.card-container').empty();
+                    if (result.length >= 1) {
+                        result.forEach(function (item) {
+                            var card = `
+                <a href="/search/detail/${item.seq}">
+                               <article class="card">
+            <img class="card-image" src="/img/park/${item.imgUrl}/${item.imgName}.jpg" alt="카드 이미지">
+            <div class="card-content">
+                <h2 class="card-title">${item.name}</h2>
+            </div>
+                          </article></a>
+                            `;
+                            $('.card-container').append(card);
+                        })
+                    }
+                }
+            })
+
+    }
+</script>
+    <style>
+
+        #main_body{
+            min-height: 1000px;
+            margin: auto;
+            width: 1800px;
+
+        }
+        .card-container {
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px; /* 카드 간의 간격 조정 (선택사항) */
+
+        }
+        .card {
+            width: 400px;
+            height: 300px;
+            margin: 10px;
+            border-radius: 20px;
+
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        .card-image {
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+
+            width: 100%;
+            height: 250px;
+        }
+
+        .card-content {
+
+
+        }
+
+        .card-title {
+            text-align: center;
+            margin-bottom: 3px;
+
+            font-size: 25px;
+            color: #0085FF;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+
+        .search {
+
+            margin: 0 auto;
+            padding-top: 50px;
+            position: relative;
+            width: 800px;
+            text-align: center; /* 검색창 내용 정렬을 중앙으로 */
+        }
+
+        input {
+
+            width: 100%;
+            height: 50px;
+            border: 1px solid skyblue;
+            border-radius: 50px;
+            padding: 10px 12px;
+            font-size: 22px;
+            font-style: italic;
+            font-family: 'FontAwesome', sans-serif;
+
+        }
+
+        input:focus
+
+        {outline:2px solid #0085FF;}
+
+        #img {
+            padding-top: 390px;
+            position : absolute;
+            width: 60px;
+            height: 60px;
+            top: 0px;
+            right: 1px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="#" class="top"><img src="/img/minsome_m_top.png" alt="top버튼"></a>
+
+<!-- 헤더 -->
+<div th:replace="~{/layout/header :: header-basic}"></div>
+
+
+<main id="main_body" class="container mt-5 justify-flex-center">
+    <div class="search">
+        <img src="/img/nightRun2.png">
+        
+    <form  name="search-form" method="get" autocomplete="off">
+            <input id="input" type="text" name="keyword" placeholder="Search Something">
+        <button id="btn_on" type="button" onclick="getSearchList()"><img id="img" src="/img/runsearch_s_2.png"></button>
+
+                </form>
+            </div>
+
+
+
+    <div class="card-container">
+
+        <a href="/search/detail/1">
+            <article class="card">
+                <img class="card-image" src="/img/park/중앙공원/중앙공원1.jpg" alt="카드 이미지">
+                <div class="card-content">
+                    <h2 class="card-title">중앙공원</h2>
+                </div>
+            </article></a>
+        <a href="/search/detail/2">
+            <article class="card">
+                <img class="card-image" src="/img/park/암남공원/암남공원2.jpg" alt="카드 이미지">
+                <div class="card-content">
+                    <h2 class="card-title">암남공원</h2>
+                </div>
+            </article></a>  <a href="/search/detail/3">
+        <article class="card">
+            <img class="card-image" src="/img/park/증산공원/증산공원1.jpg" alt="카드 이미지">
+            <div class="card-content">
+                <h2 class="card-title">증산공원</h2>
+            </div>
+        </article></a>
+        <a href="/search/detail/4">
+        <article class="card">
+            <img class="card-image" src="/img/park/가족체육공원/가족체육공원1.jpg" alt="카드 이미지">
+            <div class="card-content">
+                <h2 class="card-title">가족체육공원</h2>
+            </div>
+        </article></a>
+    </div>
+</main>
+
+
+
+
+
+
+<div th:replace="~{/layout/footer :: footer-basic}"></div>
+
+
+
+</body>
+
+</html>

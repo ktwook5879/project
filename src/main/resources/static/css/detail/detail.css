@@ -1,0 +1,157 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.form_div{
+    border-left: 1px  solid #ddd;overflow: hidden;
+    border-right: 1px  solid #ddd; overflow: hidden;
+
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 1040px;
+    height: 2100px;
+
+}
+
+.form_main{
+    font-size: 25px;
+    text-align: center;
+    border-radius: 20px;
+    width: 1040px;
+    height: 1000px;
+    margin: 300px auto 100px;
+
+}
+.add_img{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+#map{
+
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.form_main h5 {
+    margin-bottom: 200px;
+}
+#h1_text{
+
+    font-size: 70px;
+}
+/* Position the image container (needed to position the left and right arrows) */
+.slide-container{
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 1000px;
+    justify-content: center;
+    position: relative;
+    height: 600px;
+}
+
+
+/* Hide the images by default */
+.mySlides {
+
+
+    display: none;
+}
+
+.mySlides img{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    height: 500px;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 80%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+
+    width: 33.33%;
+
+
+    float: left;
+}
+.column img{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 20px;
+    height: 220px;
+    width: 100%;
+
+}
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}

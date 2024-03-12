@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis sql 쿼리 mapping 파일임을 나타내는 구문 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitc.javateam1.mapper.MypageMapper">
+    <select id="myPageInform" resultType="com.bitc.javateam1.dto.MemberDTO" parameterType="com.bitc.javateam1.dto.MemberDTO">
+        select idx , id, password, nickname, name, regidate,
+        (select count(*)   from tb_reply where re_nick = tb_login.nickname) as reCount,
+        (select count(*)  from tb_comm where cm_nick = tb_login.nickname) as commCount
+        from tb_login
+        where nickname = #{nickName}
+
+    </select>
+
+</mapper>
